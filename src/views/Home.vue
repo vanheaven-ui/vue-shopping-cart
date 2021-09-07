@@ -1,14 +1,18 @@
 <template>
   <div class="home">
     <div class="product-cards-container">
-      <ProductSummaryCard />
+      <ProductSummaryCard
+        v-for="prod in items"
+        :key="prod.id"
+        :product="prod"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import ProductSummaryCard from "../components/ProductSummaryCard.vue";
-import items from "../data/items";
+import { items } from "../data/items";
 export default {
   name: "Home",
   components: { ProductSummaryCard },
