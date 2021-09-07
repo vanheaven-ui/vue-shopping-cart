@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ProductDetailsDrawer :product="product" />
+    <ProductDetailsDrawer :product="product" :active="active.productDrawer" />
     <div class="product-cards-container">
       <ProductSummaryCard
         v-for="prod in items"
@@ -23,6 +23,9 @@ export default {
     return {
       items,
       product: null,
+      active: {
+        productDrawer: true,
+      },
     };
   },
   methods: {
