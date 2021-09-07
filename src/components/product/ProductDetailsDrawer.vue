@@ -23,6 +23,12 @@
 <script>
 export default {
   props: ["product"],
+
+  computed: {
+    product_total() {
+      return 5;
+    },
+  },
 };
 </script>
 
