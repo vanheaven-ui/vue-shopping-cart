@@ -1,9 +1,13 @@
 <template>
-  <div class="drawer-background" :class="{ show: active }">
+  <div
+    class="drawer-background"
+    :class="{ show: active }"
+    @click="$emit('close-drawer')"
+  >
     <h2>Product description drawer</h2>
   </div>
-  <div class="drawer">
-    <div class="drawer-close">x</div>
+  <div class="drawer" :class="{ show: active }">
+    <div class="drawer-close" @click="$emit('close-drawer')">x</div>
     <div class="product-details" v-if="product">
       <h3 class="text-center">{{ product.name }}</h3>
       <p class="description">{{ product.description }}</p>
@@ -42,6 +46,7 @@ export default {
   background-color: rgba(124, 124, 124, 0.55);
   z-index: 100;
   display: none;
+  cursor: pointer;
   transition: display 0.5s;
 
   &.show {

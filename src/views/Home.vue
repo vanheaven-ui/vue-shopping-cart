@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <ProductDetailsDrawer :product="product" :active="active.productDrawer" />
+    <ProductDetailsDrawer
+      :product="product"
+      :active="active.productDrawer"
+      v-on:close-drawer="closeDrawer"
+    />
     <div class="product-cards-container">
       <ProductSummaryCard
         v-for="prod in items"
@@ -24,14 +28,17 @@ export default {
       items,
       product: null,
       active: {
-        productDrawer: true,
+        productDrawer: false,
       },
     };
   },
   methods: {
     viewProduct(prod) {
       this.product = prod;
-      console.log(prod);
+      this.active.productDrawer = true;
+    },
+    closeDrawer() {
+      this.active.productDrawer = false;
     },
   },
 };
