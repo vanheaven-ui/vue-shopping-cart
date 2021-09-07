@@ -51,4 +51,11 @@ export default {
     cursor: pointer;
   }
 }
+
+@media (min-width: 500px) {
+  .card {
+    width: 350px;
+    margin: 10px;
+  }
+}
 </style>
