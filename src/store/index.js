@@ -20,7 +20,7 @@ export default createStore({
     addToCart(state, product) {
       let item = state.cart.find(i => i.id === product.id)
       if(item) {
-        item.qauntity++
+        item.quantity++
       } else {
         state.cart.push({...product, quantity: 1})
       }

@@ -16,7 +16,7 @@
       </div>
       <div class="button-container">
         <button class="remove">Remove</button>
-        <button class="add">Add</button>
+        <button class="add" @click="addToCart">Add</button>
       </div>
     </div>
   </div>
@@ -25,7 +25,11 @@
 <script>
 export default {
   props: ["product", "active"],
-
+  methods: {
+    addToCart() {
+      this.$store.commit("addToCart", this.product);
+    },
+  },
   computed: {
     product_total() {
       return this.$store.getters.productQuantity(this.product);
