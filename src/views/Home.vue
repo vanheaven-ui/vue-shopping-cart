@@ -1,12 +1,52 @@
 <template>
   <div class="home">
-    <h2>Home page</h2>
+    <ProductDetailsDrawer
+      :product="product"
+      :active="active.productDrawer"
+      v-on:close-drawer="closeDrawer"
+    />
+    <div class="product-cards-container">
+      <ProductSummaryCard
+        v-for="prod in items"
+        :key="prod.id"
+        :product="prod"
+        v-on:view-product="viewProduct"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import ProductDetailsDrawer from "../components/product/ProductDetailsDrawer.vue";
+import ProductSummaryCard from "../components/ProductSummaryCard.vue";
+import { items } from "../data/items";
 export default {
   name: "Home",
-  components: {},
+  components: { ProductSummaryCard, ProductDetailsDrawer },
+  data() {
+    return {
+      items,
+      product: null,
+      active: {
+        productDrawer: false,
+      },
+    };
+  },
+  methods: {
+    viewProduct(prod) {
+      this.product = prod;
+      this.active.productDrawer = true;
+    },
+    closeDrawer() {
+      this.active.productDrawer = false;
+    },
+  },
 };
 </script>
+<style lang="scss" scoped>
+.product-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+</style>
