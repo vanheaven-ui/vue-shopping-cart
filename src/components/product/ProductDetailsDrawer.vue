@@ -3,9 +3,7 @@
     class="drawer-background"
     :class="{ show: active }"
     @click="$emit('close-drawer')"
-  >
-    <h2>Product description drawer</h2>
-  </div>
+  ></div>
   <div class="drawer" :class="{ show: active }">
     <div class="drawer-close" @click="$emit('close-drawer')">x</div>
     <div class="product-details" v-if="product">
@@ -30,7 +28,7 @@ export default {
 
   computed: {
     product_total() {
-      return 5;
+      return this.$store.getters.productQuantity(this.product);
     },
   },
 };
